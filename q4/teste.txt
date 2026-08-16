@@ -1,0 +1,6 @@
+x = 3.5;
+if (x > 1) {
+    while (_contador < 10) {
+        return x;
+    }
+}
