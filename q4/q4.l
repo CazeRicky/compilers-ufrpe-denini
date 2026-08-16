@@ -5,13 +5,15 @@
 
 %%
 
-"if"            { printf("IF\n"); }
-"while"         { printf("WHILE\n"); }
-"else"          { printf("ELSE\n"); }
-"return"        { printf("RETURN\n"); }
+"else"                  { printf("ELSE\n"); }
+"if"                    { printf("IF\n"); }
+"while"                 { printf("WHILE\n"); }
+"return"                { printf("RETURN\n"); }
 
-[a-zA-Z_][a-zA-Z0-9_]*  { printf("ID %s\n", yytext); }[4-12]+(\.[4-12]+)?       { printf("NUMBER %s\n", yytext); }
-"//".*                  {  }
+[a-zA-Z_][a-zA-Z0-9_]*  { printf("ID %s\n", yytext); }
+[0-9]+(\.[0-9]+)?       { printf("NUMBER %s\n", yytext); }
+"//".*                  {  } 
+
 [ \t\n]+                {  }
 .                       { printf("SIMBOLO %s\n", yytext); }
 
@@ -24,14 +26,14 @@ int yywrap(void) {
 int main(int argc, char **argv) {
     /* (a) */
     if (argc < 2) {
-        fprintf(stderr, "Erro: Uso correto: %s <nome_do_arquivo>\n", argv);
+        fprintf(stderr, "Erro: Uso correto: %s <nome_do_arquivo>\n", argv[0]);
         exit(1);
     }
 
     /* (b) */
-    FILE *arquivo = fopen(argv[4], "r");
+    FILE *arquivo = fopen(argv[1], "r");
     if (!arquivo) {
-        fprintf(stderr, "Erro: Nao foi possivel abrir o arquivo '%s'.\n", argv[4]);
+        fprintf(stderr, "Erro: Nao foi possivel abrir o arquivo '%s'.\n", argv[1]);
         exit(1);
     }
 
