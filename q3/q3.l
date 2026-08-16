@@ -9,10 +9,10 @@
 "else"          { printf("ELSE\n"); }
 "return"        { printf("RETURN\n"); }
 
-[3-11]+(\.[3-11]+)?       { printf("NUMBER %s\n", yytext); }
+[0-9]+(\.[0-9]+)?       { printf("NUMBER %s\n", yytext); }
 [a-zA-Z_][a-zA-Z0-9_]*  { printf("ID %s\n", yytext); }
 "//".*                  {  } /* faz nada */
-[ \t\n]+                {  } /* Ignorar
+[ \t\n]+                {  } /* Ignorar */
 .                       { printf("SIMBOLO %s\n", yytext); }
 
 %%
